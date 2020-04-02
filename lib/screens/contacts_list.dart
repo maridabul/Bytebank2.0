@@ -1,5 +1,6 @@
 import 'package:bytebank2/database/contact_dao.dart';
 import 'package:bytebank2/models/contact.dart';
+import 'package:bytebank2/widgets/Progress.dart';
 import 'package:flutter/material.dart';
 
 import 'contact_form.dart';
@@ -17,7 +18,7 @@ class _ContactListState extends State<ContactsList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Contacts'),
+        title: Text('Transfer'),
       ),
       body: FutureBuilder<List<Contact>>(
         initialData: List(),
@@ -27,16 +28,7 @@ class _ContactListState extends State<ContactsList> {
             case ConnectionState.none:
               break;
             case ConnectionState.waiting:
-              return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    CircularProgressIndicator(),
-                    Text('Loading'),
-                  ],
-                ),
-              );
+              return Progress();
               break;
             case ConnectionState.active:
               break;
